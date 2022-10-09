@@ -1,0 +1,53 @@
+.general-overview {
+  .content {
+    margin-top: 16px;
+    .subcard-list {
+      flex-wrap: wrap;
+
+      .subcard {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 20%;
+        border-radius: 10px;
+        border: 1px solid rgb(202, 202, 202);
+        padding: 16px;
+        margin: 4px 0;
+
+        @media (max-width: 1024px) {
+          width: 45%;
+        }
+
+        @media (max-width: 500px) {
+          width: 95%;
+        }
+
+        &-title {
+          color: rgb(70, 70, 70);
+          display: block;
+        }
+
+        &-value {
+          display: inline-block;
+          margin-top: 8px;
+          font-size: 1.4rem;
+          font-weight: bold;
+        }
+
+        &-value-unit {
+          margin-left: 4px;
+          font-size: 1.2rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.bulk-edit-button {
+  float: right;
+}
+
+.employees-card {
+  margin-top: 16px;
+}
