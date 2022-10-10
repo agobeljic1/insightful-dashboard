@@ -1,42 +1,21 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { of } from 'rxjs';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { map, Observable } from 'rxjs';
+import { AppState } from 'src/app/store/app.state';
+import { EmployeeSelectors } from 'src/app/store/employee';
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardPageComponent {
-  employees$ = of([
-    {
-      id: '1',
-      name: 'Adnan Gobeljic',
-      email: 'adnan.gobeljic@insightful.com',
-      hourlyRate: 30,
-      overtimeHourlyRate: 100
-    },
-    {
-      id: '2',
-      name: 'Adnan Gobeljic',
-      email: 'adnan.gobeljic@insightful.com',
-      hourlyRate: 30,
-      overtimeHourlyRate: 100
-    },
-    {
-      id: '3',
-      name: 'Adnan Gobeljic',
-      email: 'adnan.gobeljic@insightful.com',
-      hourlyRate: 30,
-      overtimeHourlyRate: 100
-    },
-    {
-      id: '4',
-      name: 'Adnan Gobeljic',
-      email: 'adnan.gobeljic@insightful.com',
-      hourlyRate: 30,
-      overtimeHourlyRate: 100
-    }
-  ]);
+export class DashboardPageComponent implements OnInit {
+  bulkEditDisabled$!: Observable<boolean>;
+  constructor(private store: Store<AppState>) {}
 
-  constructor() {}
+  ngOnInit(): void {
+    this.bulkEditDisabled$ = this.store.select(
+      EmployeeSelectors.selectBulkEditDisabled
+    );
+  }
 }

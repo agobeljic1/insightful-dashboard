@@ -34,7 +34,12 @@
 <mat-card class="employees-card">
   <mat-card-title>
     Employees
-    <button mat-raised-button color="primary" class="bulk-edit-button">
+    <button
+      mat-raised-button
+      color="primary"
+      class="bulk-edit-button"
+      [disabled]="bulkEditDisabled$ | async"
+    >
       Bulk edit
     </button>
   </mat-card-title>
