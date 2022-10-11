@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmployeesTableComponent } from './employees-table.component';
+import { ShiftsTableComponent } from './shifts-table.component';
 
-describe('EmployeesTableComponent', () => {
-  let component: EmployeesTableComponent;
-  let fixture: ComponentFixture<EmployeesTableComponent>;
+describe('ShiftsTableComponent', () => {
+  let component: ShiftsTableComponent;
+  let fixture: ComponentFixture<ShiftsTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EmployeesTableComponent]
+      declarations: [ShiftsTableComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EmployeesTableComponent);
+    fixture = TestBed.createComponent(ShiftsTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

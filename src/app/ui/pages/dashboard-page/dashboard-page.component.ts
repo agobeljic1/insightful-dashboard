@@ -1,8 +1,9 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Employee } from 'src/app/model/Employee';
 import { AppState } from 'src/app/store/app.state';
-import { EmployeeSelectors } from 'src/app/store/employee';
+import { EmployeeActions, EmployeeSelectors } from 'src/app/store/employee';
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.component.html',
@@ -11,11 +12,21 @@ import { EmployeeSelectors } from 'src/app/store/employee';
 })
 export class DashboardPageComponent implements OnInit {
   bulkEditDisabled$!: Observable<boolean>;
+  selectedEmployees$!: Observable<Employee[]>;
+
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.bulkEditDisabled$ = this.store.select(
       EmployeeSelectors.selectBulkEditDisabled
     );
+
+    this.selectedEmployees$ = this.store.select(
+      EmployeeSelectors.selectSelectedEmployees
+    );
+  }
+
+  openBulkEdit(employees: Employee[]): void {
+    this.store.dispatch(EmployeeActions.openBulkEdit({ employees }));
   }
 }

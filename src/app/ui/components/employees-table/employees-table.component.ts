@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Employee } from 'src/app/model/Employee';
 import { AppState } from 'src/app/store/app.state';
 import { EmployeeActions, EmployeeSelectors } from 'src/app/store/employee';
@@ -17,18 +17,25 @@ export class EmployeesTableComponent implements OnInit {
 
   displayedColumns = [
     'select',
-    'id',
     'name',
     'email',
-    'hourlyRate',
-    'overtimeHourlyRate'
+    'totalHours',
+    'totalRegularHoursPaid',
+    'totalOvertimeHoursPaid'
   ];
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store.dispatch(EmployeeActions.loadEmployees());
 
-    this.employees$ = this.store.select(EmployeeSelectors.selectAllEmployees);
+    this.employees$ = this.store
+      .select(EmployeeSelectors.selectAllEmployees)
+      .pipe(
+        map((a) => {
+          console.log(a);
+          return a;
+        })
+      );
 
     this.loadingEmployees$ = this.store.select(
       EmployeeSelectors.selectLoadingEmployees

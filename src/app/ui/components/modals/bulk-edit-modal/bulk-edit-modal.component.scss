@@ -1,0 +1,12 @@
+.content {
+  min-height: 600px;
+}
+
+.title-bar {
+  & > h2 {
+    margin-bottom: 0;
+  }
+  & > .spinner {
+    margin-left: 8px;
+  }
+}

@@ -1,0 +1,22 @@
+<ng-container *ngrxLet="selectedEmployees$; let selectedEmployees">
+  <div class="d-flex align-items-center title-bar">
+    <h2>Bulk edit</h2>
+    <mat-spinner *ngIf="!form" [diameter]="25" class="spinner"></mat-spinner>
+  </div>
+  <mat-dialog-content class="mat-typography content">
+    <form [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()">
+      <div formArrayName="employees">
+        <div *ngFor="let employeeForm of employeeForms; let empIndex = index">
+          <app-employee-edit
+            [employee]="selectedEmployees[empIndex]"
+            [formGroup]="employeeForm"
+          ></app-employee-edit>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onSave()" cdkFocusInitial>Save</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</ng-container>

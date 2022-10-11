@@ -7,4 +7,7 @@ export interface Employee {
   hourlyRate: number;
   overtimeHourlyRate: number;
   shifts?: Shift[];
+  totalHours?: number;
+  totalRegularHoursPaid?: number;
+  totalOvertimeHoursPaid?: number;
 }

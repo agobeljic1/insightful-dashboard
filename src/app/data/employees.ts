@@ -3,79 +3,79 @@ import { Employee } from '../model/Employee';
 let employees: Employee[] = [
   {
     id: '1',
-    name: 'Adnan Gobeljic',
-    email: 'adnan.gobeljic@insightful.com',
+    name: 'Marko Nemanjic',
+    email: 'marko.nemanjic@insightful.com',
     hourlyRate: 30,
-    overtimeHourlyRate: 100
+    overtimeHourlyRate: 41
   },
   {
     id: '2',
-    name: 'Adnan Gobeljic',
-    email: 'adnan.gobeljic@insightful.com',
-    hourlyRate: 30,
-    overtimeHourlyRate: 100
+    name: 'Hamza Markovic',
+    email: 'hamza.markovic@insightful.com',
+    hourlyRate: 40,
+    overtimeHourlyRate: 67
   },
   {
     id: '3',
-    name: 'Adnan Gobeljic',
-    email: 'adnan.gobeljic@insightful.com',
-    hourlyRate: 30,
-    overtimeHourlyRate: 100
+    name: 'Damir Damirovic',
+    email: 'damir.damirovic@insightful.com',
+    hourlyRate: 25,
+    overtimeHourlyRate: 28
   },
   {
     id: '4',
-    name: 'Adnan Gobeljic',
-    email: 'adnan.gobeljic@insightful.com',
-    hourlyRate: 30,
-    overtimeHourlyRate: 100
+    name: 'Nemanja Hamzic',
+    email: 'nemanja.hamzin@insightful.com',
+    hourlyRate: 42,
+    overtimeHourlyRate: 51
   },
   {
     id: '5',
-    name: 'Adnan Gobeljic',
-    email: 'adnan.gobeljic@insightful.com',
-    hourlyRate: 30,
-    overtimeHourlyRate: 100
+    name: 'Strahinja Pantelic',
+    email: 'strahinja.pantelic@insightful.com',
+    hourlyRate: 45,
+    overtimeHourlyRate: 68
   },
   {
     id: '6',
-    name: 'Adnan Gobeljic',
-    email: 'adnan.gobeljic@insightful.com',
-    hourlyRate: 30,
-    overtimeHourlyRate: 100
+    name: 'Pantelija Strahinjic',
+    email: 'pantelija.strahinjic@insightful.com',
+    hourlyRate: 60,
+    overtimeHourlyRate: 75
   },
   {
     id: '7',
-    name: 'Adnan Gobeljic',
-    email: 'adnan.gobeljic@insightful.com',
-    hourlyRate: 30,
-    overtimeHourlyRate: 100
+    name: 'Jovana Amiric',
+    email: 'jovana.amiric@insightful.com',
+    hourlyRate: 12,
+    overtimeHourlyRate: 80
   },
   {
     id: '8',
-    name: 'Adnan Gobeljic',
-    email: 'adnan.gobeljic@insightful.com',
-    hourlyRate: 30,
-    overtimeHourlyRate: 100
+    name: 'Amira Jovanic',
+    email: 'amira.jovanic@insightful.com',
+    hourlyRate: 20,
+    overtimeHourlyRate: 32
   },
   {
     id: '9',
-    name: 'Adnan Gobeljic',
-    email: 'adnan.gobeljic@insightful.com',
-    hourlyRate: 30,
-    overtimeHourlyRate: 100
+    name: 'Tarik Vasilic',
+    email: 'tarik.vasilic@insightful.com',
+    hourlyRate: 33,
+    overtimeHourlyRate: 84
   },
   {
     id: '10',
-    name: 'Adnan Gobeljic',
-    email: 'adnan.gobeljic@insightful.com',
-    hourlyRate: 30,
-    overtimeHourlyRate: 100
+    name: 'Bogdan Bogdanovic',
+    email: 'bogdan.bogdanovic@insightful.com',
+    hourlyRate: 31,
+    overtimeHourlyRate: 65
   },
   {
     id: '11',
-    name: 'Adnan Gobeljic',
-    email: 'adnan.gobeljic@insightful.com',
-    hourlyRate: 30,
+    name: 'Vasilije Tarikovic',
+    email: 'vasilije.tarikovic@insightful.com',
+    hourlyRate: 29,
     overtimeHourlyRate: 100
   }
 ];

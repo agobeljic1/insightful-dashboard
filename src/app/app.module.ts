@@ -13,13 +13,26 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { EmployeeEffects } from './store/employee/employee.effects';
 import { reducers } from './store/app.state';
+import { BulkEditModalComponent } from './ui/components/modals/bulk-edit-modal/bulk-edit-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveComponentModule } from '@ngrx/component';
+import { ShiftsTableComponent } from './ui/components/shifts-table/shifts-table.component';
+import { EmployeeEditComponent } from './ui/components/employee-edit/employee-edit.component';
 
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatTimepickerModule,
+  NgxMatNativeDateModule
+} from '@angular-material-components/datetime-picker';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardPageComponent,
     NotFoundPageComponent,
-    EmployeesTableComponent
+    EmployeesTableComponent,
+    BulkEditModalComponent,
+    ShiftsTableComponent,
+    EmployeeEditComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +40,11 @@ import { reducers } from './store/app.state';
     BrowserAnimationsModule,
     FlexLayoutModule,
     MaterialModule,
+    ReactiveFormsModule,
+    ReactiveComponentModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([EmployeeEffects])
   ],

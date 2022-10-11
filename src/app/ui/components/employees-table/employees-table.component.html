@@ -14,13 +14,6 @@
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef fxFlex="0 0 75px">Id</th>
-      <td mat-cell *matCellDef="let element" fxFlex="0 0 75px">
-        {{ element.id }}
-      </td>
-    </ng-container>
-
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef fxFlex="1 0 180px">Name</th>
       <td mat-cell *matCellDef="let element" fxFlex="1 0 180px">
@@ -35,19 +28,28 @@
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="hourlyRate">
-      <th mat-header-cell *matHeaderCellDef fxFlex="0 0 120px">Hourly rate</th>
+    <ng-container matColumnDef="totalHours">
+      <th mat-header-cell *matHeaderCellDef fxFlex="0 0 120px">Total time</th>
       <td mat-cell *matCellDef="let element" fxFlex="0 0 120px">
-        {{ element.hourlyRate }} $
+        {{ element.totalHours }} h
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="overtimeHourlyRate">
-      <th mat-header-cell *matHeaderCellDef fxFlex="0 0 140px">
-        Overtime hourly rate
+    <ng-container matColumnDef="totalRegularHoursPaid">
+      <th mat-header-cell *matHeaderCellDef fxFlex="0 0 120px">
+        Total regular paid
       </th>
-      <td mat-cell *matCellDef="let element" fxFlex="0 0 140px">
-        {{ element.overtimeHourlyRate }} $
+      <td mat-cell *matCellDef="let element" fxFlex="0 0 120px">
+        {{ element.totalRegularHoursPaid }} $
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalOvertimeHoursPaid">
+      <th mat-header-cell *matHeaderCellDef fxFlex="0 0 120px">
+        Total overtime paid
+      </th>
+      <td mat-cell *matCellDef="let element" fxFlex="0 0 120px">
+        {{ element.totalOvertimeHoursPaid }} $
       </td>
     </ng-container>
 

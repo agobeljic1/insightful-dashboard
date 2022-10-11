@@ -5,6 +5,7 @@ import {
   loadEmployeesFailure,
   loadEmployeesSuccess,
   selectEmployee,
+  setEmployeeShifts,
   unselectEmployee
 } from './employee.actions';
 
@@ -48,5 +49,12 @@ export const employeeReducer = createReducer(
       (item) => item.id !== employee.id
     ),
     bulkEditDisabled: state.selectedEmployees.length <= 1
+  })),
+  on(setEmployeeShifts, (state, { shifts }) => ({
+    ...state,
+    selectedEmployees: state.selectedEmployees.map((employee) => ({
+      ...employee,
+      shifts: shifts[employee.id] || []
+    }))
   }))
 );

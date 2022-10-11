@@ -18,3 +18,8 @@ export const selectBulkEditDisabled = createSelector(
   selectEmployees,
   (state: EmployeeState) => state.bulkEditDisabled
 );
+
+export const selectSelectedEmployees = createSelector(
+  selectEmployees,
+  (state: EmployeeState) => state.selectedEmployees
+);

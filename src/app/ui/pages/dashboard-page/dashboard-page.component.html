@@ -1,49 +1,52 @@
-<mat-card class="general-overview">
-  <mat-card-title> General overview </mat-card-title>
-  <mat-card-content class="content"
-    ><div class="d-flex justify-content-around w-full subcard-list">
-      <div class="subcard">
-        <label class="subcard-title">Employees</label>
-        <label class="subcard-value">12</label>
-      </div>
-      <div class="subcard">
-        <label class="subcard-title">Total time</label>
-        <div>
-          <label class="subcard-value">2123:20</label>
-          <span class="subcard-value-unit">h</span>
+<ng-container *ngrxLet="selectedEmployees$; let selectedEmployees">
+  <mat-card class="general-overview">
+    <mat-card-title> General overview </mat-card-title>
+    <mat-card-content class="content"
+      ><div class="d-flex justify-content-around w-full subcard-list">
+        <div class="subcard">
+          <label class="subcard-title">Employees</label>
+          <label class="subcard-value">12</label>
+        </div>
+        <div class="subcard">
+          <label class="subcard-title">Total time</label>
+          <div>
+            <label class="subcard-value">2123:20</label>
+            <span class="subcard-value-unit">h</span>
+          </div>
+        </div>
+        <div class="subcard">
+          <label class="subcard-title">Regular hours paid</label>
+          <div>
+            <label class="subcard-value">3212312</label>
+            <span class="subcard-value-unit">$</span>
+          </div>
+        </div>
+        <div class="subcard">
+          <label class="subcard-title">Overtime hours paid</label>
+          <div>
+            <label class="subcard-value">1212312</label>
+            <span class="subcard-value-unit">$</span>
+          </div>
         </div>
       </div>
-      <div class="subcard">
-        <label class="subcard-title">Regular hours paid</label>
-        <div>
-          <label class="subcard-value">3212312</label>
-          <span class="subcard-value-unit">$</span>
-        </div>
-      </div>
-      <div class="subcard">
-        <label class="subcard-title">Overtime hours paid</label>
-        <div>
-          <label class="subcard-value">1212312</label>
-          <span class="subcard-value-unit">$</span>
-        </div>
-      </div>
-    </div>
-  </mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
 
-<mat-card class="employees-card">
-  <mat-card-title>
-    Employees
-    <button
-      mat-raised-button
-      color="primary"
-      class="bulk-edit-button"
-      [disabled]="bulkEditDisabled$ | async"
-    >
-      Bulk edit
-    </button>
-  </mat-card-title>
-  <mat-card-content class="content">
-    <app-employees-table></app-employees-table>
-  </mat-card-content>
-</mat-card>
+  <mat-card class="employees-card">
+    <mat-card-title>
+      Employees
+      <button
+        mat-raised-button
+        color="primary"
+        class="bulk-edit-button"
+        [disabled]="bulkEditDisabled$ | async"
+        (click)="openBulkEdit(selectedEmployees)"
+      >
+        Bulk edit
+      </button>
+    </mat-card-title>
+    <mat-card-content class="content">
+      <app-employees-table></app-employees-table>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

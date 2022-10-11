@@ -1,6 +1,15 @@
-.employees-table {
-  margin-top: 32px !important;
+.shifts-table {
+  margin: 8px 0 16px !important;
   overflow-x: scroll;
+
+  .scroll-wrapper {
+    overflow-y: scroll;
+    max-height: 300px;
+  }
+
+  mat-form-field {
+    max-width: 100%;
+  }
 }
 
 .mat-row {
