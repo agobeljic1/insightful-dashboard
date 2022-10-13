@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { delay, of } from 'rxjs';
 import { setShifts, shifts } from '../data/shifts';
 import { Employee } from '../model/Employee';
 import { Shift } from '../model/Shift';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShiftService {
-  constructor() {}
+  constructor(private baseService: BaseService) {}
 
   getEmployeeShifts(employeeIdList: string[]) {
     const shiftMap = employeeIdList.reduce(
@@ -18,7 +18,7 @@ export class ShiftService {
       },
       {}
     );
-    return of(shiftMap).pipe(delay(Math.random() * 200 + 300));
+    return this.baseService.createObservableWithRandomDelay(shiftMap);
   }
 
   bulkEditShifts(editedEmployees: Employee[]) {
@@ -35,9 +35,12 @@ export class ShiftService {
       {}
     );
     const newShifts = shifts.map((shift) => {
-      return editedShiftsChanges[shift.id] ?? shift;
+      return {
+        ...shift,
+        ...(editedShiftsChanges[shift.id] || {})
+      };
     });
     setShifts(newShifts);
-    return of(true).pipe(delay(500));
+    return this.baseService.createObservableWithRandomDelay(true);
   }
 }

@@ -14,6 +14,7 @@ import { EmployeeActions, EmployeeSelectors } from 'src/app/store/employee';
 export class EmployeesTableComponent implements OnInit {
   employees$!: Observable<any>;
   loadingEmployees$!: Observable<boolean>;
+  selectedEmployeesMap$!: Observable<{ [key: string]: boolean }>;
 
   displayedColumns = [
     'select',
@@ -28,13 +29,20 @@ export class EmployeesTableComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(EmployeeActions.loadEmployees());
 
-    this.employees$ = this.store
-      .select(EmployeeSelectors.selectAllEmployees)
+    this.employees$ = this.store.select(EmployeeSelectors.selectAllEmployees);
+
+    this.selectedEmployeesMap$ = this.store
+      .select(EmployeeSelectors.selectSelectedEmployees)
       .pipe(
-        map((a) => {
-          console.log(a);
-          return a;
-        })
+        map((selectedEmployees) =>
+          selectedEmployees.reduce(
+            (acc: { [key: string]: boolean }, employee) => {
+              acc[employee.id] = true;
+              return acc;
+            },
+            {}
+          )
+        )
       );
 
     this.loadingEmployees$ = this.store.select(

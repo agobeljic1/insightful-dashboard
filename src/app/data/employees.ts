@@ -25,7 +25,7 @@ let employees: Employee[] = [
   {
     id: '4',
     name: 'Nemanja Hamzic',
-    email: 'nemanja.hamzin@insightful.com',
+    email: 'nemanja.hamzic@insightful.com',
     hourlyRate: 42,
     overtimeHourlyRate: 51
   },

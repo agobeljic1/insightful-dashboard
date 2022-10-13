@@ -1,6 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
+import { DashboardStats } from 'src/app/model/DashboardStats';
 import { Employee } from 'src/app/model/Employee';
 import {
+  clearSelectedEmployees,
+  loadDashboardStats,
+  loadDashboardStatsFailure,
+  loadDashboardStatsSuccess,
   loadEmployees,
   loadEmployeesFailure,
   loadEmployeesSuccess,
@@ -14,17 +19,34 @@ export interface EmployeeState {
   loadingEmployees: boolean;
   selectedEmployees: Employee[];
   bulkEditDisabled: boolean;
+  dashboardStats: DashboardStats;
+  loadingDashboardStats: boolean;
 }
 
 export const initialState: EmployeeState = {
   employees: [],
   loadingEmployees: false,
   selectedEmployees: [],
-  bulkEditDisabled: true
+  bulkEditDisabled: true,
+  dashboardStats: {},
+  loadingDashboardStats: false
 };
 
 export const employeeReducer = createReducer(
   initialState,
+  on(loadDashboardStats, (state: EmployeeState) => ({
+    ...state,
+    loadingDashboardStats: true
+  })),
+  on(loadDashboardStatsSuccess, (state, { dashboardStats }) => ({
+    ...state,
+    dashboardStats,
+    loadingDashboardStats: false
+  })),
+  on(loadDashboardStatsFailure, (state) => ({
+    ...state,
+    loadingDashboardStats: false
+  })),
   on(loadEmployees, (state: EmployeeState) => ({
     ...state,
     loadingEmployees: true
@@ -56,5 +78,9 @@ export const employeeReducer = createReducer(
       ...employee,
       shifts: shifts[employee.id] || []
     }))
+  })),
+  on(clearSelectedEmployees, (state) => ({
+    ...state,
+    selectedEmployees: []
   }))
 );

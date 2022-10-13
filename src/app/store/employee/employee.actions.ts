@@ -2,6 +2,19 @@ import { createAction, props } from '@ngrx/store';
 import { Employee } from 'src/app/model/Employee';
 import { Shift } from 'src/app/model/Shift';
 
+export const loadDashboardStats = createAction(
+  '[Dashboard API] Load Dashboard Stats Employees'
+);
+
+export const loadDashboardStatsSuccess = createAction(
+  '[Dashboard API] Load Dashboard Stats Success',
+  props<{ dashboardStats: object }>()
+);
+
+export const loadDashboardStatsFailure = createAction(
+  '[Dashboard API] Load Dashboard Stats Failure'
+);
+
 export const loadEmployees = createAction('[Employee Page] Load Employees');
 
 export const loadEmployeesSuccess = createAction(
@@ -65,4 +78,8 @@ export const bulkEditShiftsSuccess = createAction(
 
 export const bulkEditShiftsFailure = createAction(
   '[Dashboard Page] Bulk Edit Shifts Failure'
+);
+
+export const clearSelectedEmployees = createAction(
+  '[Dashboard Page] Clear Selected Employees'
 );

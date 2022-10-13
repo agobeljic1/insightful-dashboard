@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { DashboardService } from 'src/app/service/dashboard.service';
 import { EmployeeService } from 'src/app/service/employee.service';
 import { ShiftService } from 'src/app/service/shift.service';
 import { BulkEditModalComponent } from 'src/app/ui/components/modals/bulk-edit-modal/bulk-edit-modal.component';
@@ -12,9 +13,26 @@ export class EmployeeEffects {
   constructor(
     private actions$: Actions,
     private employeeService: EmployeeService,
+    private dashboardService: DashboardService,
     private shiftService: ShiftService,
     private dialog: MatDialog
   ) {}
+
+  dashboardStats$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(EmployeeActions.loadDashboardStats),
+      switchMap(() => {
+        return this.dashboardService.getDashbordStats().pipe(
+          map((dashboardStats) => {
+            return EmployeeActions.loadDashboardStatsSuccess({
+              dashboardStats
+            });
+          }),
+          catchError(() => of(EmployeeActions.loadDashboardStatsFailure()))
+        );
+      })
+    )
+  );
 
   employees$ = createEffect(() =>
     this.actions$.pipe(
@@ -97,6 +115,20 @@ export class EmployeeEffects {
     this.actions$.pipe(
       ofType(EmployeeActions.bulkEditEmployeesSuccess),
       map(() => EmployeeActions.loadEmployees())
+    )
+  );
+
+  refetchDashboardStats$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(EmployeeActions.bulkEditEmployeesSuccess),
+      map(() => EmployeeActions.loadDashboardStats())
+    )
+  );
+
+  clearSelectedEmployees$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(EmployeeActions.bulkEditEmployeesSuccess),
+      map(() => EmployeeActions.clearSelectedEmployees())
     )
   );
 }

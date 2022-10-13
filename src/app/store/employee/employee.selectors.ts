@@ -23,3 +23,13 @@ export const selectSelectedEmployees = createSelector(
   selectEmployees,
   (state: EmployeeState) => state.selectedEmployees
 );
+
+export const selectDashboardStats = createSelector(
+  selectEmployees,
+  (state: EmployeeState) => state.dashboardStats
+);
+
+export const selectLoadingDashboardStats = createSelector(
+  selectEmployees,
+  (state: EmployeeState) => state.loadingDashboardStats
+);
